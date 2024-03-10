@@ -26,7 +26,7 @@ class Auth {
 
   async signin(req, res) {
     let { password, username } = req.body;
-    username = (username || "").trim().toLowerCase();
+    username = (username || "").trim();
 
     if (!username || !password) return res.status(400).send({ ok: false, code: EMAIL_AND_PASSWORD_REQUIRED });
 
@@ -63,7 +63,7 @@ class Auth {
 
       if (password && !validatePassword(password)) return res.status(200).send({ ok: false, user: null, code: PASSWORD_NOT_VALIDATED });
 
-      const user = await this.model.create({ name: username, organisation, password });
+      const user = await this.model.create({ name: username.trim(), organisation, password });
       const token = jwt.sign({ _id: user._id }, config.secret, { expiresIn: JWT_MAX_AGE });
       const opts = { maxAge: COOKIE_MAX_AGE, secure: config.ENVIRONMENT === "development" ? false : true, httpOnly: false };
       res.cookie("jwt", token, opts);
