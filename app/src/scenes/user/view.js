@@ -42,7 +42,7 @@ const Detail = ({ user }) => {
   return (
     <Formik
       initialValues={user}
-      onSubmit={async (values) => {
+      onSubmit={async (values, { setSubmitting }) => {
         try {
           await api.put(`/user/${user._id}`, values);
           toast.success("Updated!");
@@ -50,6 +50,7 @@ const Detail = ({ user }) => {
           console.log(e);
           toast.error("Some Error!");
         }
+        setSubmitting(false);
       }}>
       {({ values, handleChange, handleSubmit, isSubmitting }) => {
         return (
