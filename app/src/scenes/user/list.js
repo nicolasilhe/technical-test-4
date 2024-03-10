@@ -105,7 +105,11 @@ const Create = () => {
               e.stopPropagation();
             }}>
             <Formik
-              initialValues={{}}
+              initialValues={{
+                username: "",
+                email: "",
+                password: "",
+              }}
               onSubmit={async (values, { setSubmitting }) => {
                 try {
                   values.status = "active";
