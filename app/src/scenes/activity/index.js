@@ -36,7 +36,7 @@ const Activity = () => {
       <div className="flex flex-wrap gap-5 p-2 md:!px-8">
         <SelectProject
           value={project}
-          onChange={(e) => setProject(e.name)}
+          onChange={(e) => setProject(e?.name)}
           className="w-[180px] bg-[#FFFFFF] text-[#212325] py-[10px] px-[14px] rounded-[10px] border-r-[16px] border-[transparent] cursor-pointer shadow-sm font-normal text-[14px]"
         />
         <SelectMonth start={-3} indexDefaultValue={3} value={date} onChange={(e) => setDate(e.target.value)} showArrows />
@@ -145,6 +145,7 @@ const Activities = ({ date, user, project }) => {
                       const day = _date.getDay();
                       const weekday = days[day];
                       const date = _date.getDate();
+
                       return (
                         <th
                           className={`w-[20px] border border-[#E5EAEF] text-[12px] font-semibold text-center ${day == 0 || day == 6 ? "bg-[#FFD5F1]" : "bg-[white]"}`}
@@ -175,7 +176,7 @@ const Activities = ({ date, user, project }) => {
                   </tr>
                   {activities.map((e, i) => {
                     return (
-                      <React.Fragment key={e.project}>
+                      <React.Fragment key={`${i}-${e.project}`}>
                         <tr className="border-t border-b border-r border-[#E5EAEF]" key={`1-${e._id}`} onClick={() => setOpen(i)}>
                           <th className="w-[100px] border-t border-b border-r text-[12px] font-bold text-[#212325] text-left">
                             <div className="flex flex-1 items-center justify-between gap-1 px-2">
