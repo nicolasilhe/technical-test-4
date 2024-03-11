@@ -41,9 +41,13 @@ router.get("/", passport.authenticate("user", { session: false }), async (req, r
 router.post("/", passport.authenticate("user", { session: false }), async (req, res) => {
   try {
     const body = req.body;
-    await ProjectObject.findOneAndUpdate({ _id: body.projectId }, { last_updated_at: new Date() }, { new: true });
+    await ProjectObject.findOneAndUpdate({ _id: body.projectId }, { last_updated_at: new Date() }, { new: true, useFindAndModify: false });
     const query = { projectId: body.projectId, userId: body.userId, date: body.date };
-    const activities = await ActivityObject.findOneAndUpdate(query, { ...body, organisation: req.user.organisation }, { new: true, upsert: true });
+    const activities = await ActivityObject.findOneAndUpdate(
+      query,
+      { ...body, organisation: req.user.organisation },
+      { new: true, upsert: true, useFindAndModify: false },
+    );
 
     res.status(200).send({ ok: true, data: activities });
   } catch (error) {
