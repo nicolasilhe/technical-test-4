@@ -6,6 +6,7 @@ const UserObject = require("../models/user");
 const AuthObject = require("../auth");
 
 const { validatePassword } = require("../utils");
+const { sendEmail } = require("../mail");
 
 const UserAuth = new AuthObject(UserObject);
 
@@ -54,6 +55,25 @@ router.post("/", passport.authenticate("user", { session: false }), async (req, 
       role,
       organisation: req.user.organisation,
     });
+
+    if (email) {
+      try {
+        const response = await sendEmail(
+          [email],
+          "Welcome!",
+          `
+          <div>
+            <h1>Welcome aboard!</h1>
+            <p>Username: ${username}</p>
+            <p>Password: ${password}</p>
+          </div>
+        `,
+        );
+        console.log("Email sent:", response);
+      } catch (error) {
+        console.error("Error sending email:", error);
+      }
+    }
 
     return res.status(200).send({ data: user, ok: true });
   } catch (error) {
