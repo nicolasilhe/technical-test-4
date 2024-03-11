@@ -16,7 +16,7 @@ const Schema = new mongoose.Schema({
   detail: [{ date: Date, value: Number }],
   created_at: { type: Date, default: Date.now },
   comment: { type: String },
-  organisation: { type: String, trim: true, unique: true },
+  organisation: { type: String, trim: true },
 });
 
 const OBJ = mongoose.model(MODELNAME, Schema);
