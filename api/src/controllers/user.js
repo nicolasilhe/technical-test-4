@@ -77,7 +77,7 @@ router.put("/:id", passport.authenticate("user", { session: false }), async (req
   try {
     const obj = req.body;
 
-    const user = await UserObject.findByIdAndUpdate(req.params.id, obj, { new: true });
+    const user = await UserObject.findByIdAndUpdate(req.params.id, obj, { new: true, useFindAndModify: false });
     res.status(200).send({ ok: true, user });
   } catch (error) {
     console.log(error);
@@ -88,7 +88,7 @@ router.put("/:id", passport.authenticate("user", { session: false }), async (req
 router.put("/", passport.authenticate("user", { session: false }), async (req, res) => {
   try {
     const obj = req.body;
-    const data = await UserObject.findByIdAndUpdate(req.user._id, obj, { new: true });
+    const data = await UserObject.findByIdAndUpdate(req.user._id, obj, { new: true, useFindAndModify: false });
     res.status(200).send({ ok: true, data });
   } catch (error) {
     console.log(error);

@@ -52,7 +52,7 @@ router.put("/:id", passport.authenticate("user", { session: false }), async (req
   try {
     const obj = req.body;
 
-    const data = await ProjectObject.findByIdAndUpdate(req.params.id, obj, { new: true });
+    const data = await ProjectObject.findByIdAndUpdate(req.params.id, obj, { new: true, useFindAndModify: false });
 
     res.status(200).send({ ok: true, data });
   } catch (error) {
