@@ -4,7 +4,11 @@
   "scripts": {
     "dev": "webpack serve --port 8082 --mode development --config webpack.dev.config.js --progress --liveReload --open --hot --inline",
     "start": "npm run build && node server/index.js",
-    "build": "webpack"
+    "build": "webpack",
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write .",
+    "lint:check": "eslint",
+    "lint:fix": "eslint --fix"
   },
   "devDependencies": {
     "@babel/cli": "7.16.0",
@@ -23,16 +27,16 @@
     "@webpack-cli/serve": "^1.6.1",
     "copy-webpack-plugin": "10.2.0",
     "css-loader": "5.2.7",
-    "eslint": "8.7.0",
-    "eslint-config-prettier": "8.3.0",
+    "eslint": "^8.7.0",
+    "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "2.25.4",
     "eslint-plugin-prettier": "4.0.0",
-    "eslint-plugin-react": "7.28.0",
+    "eslint-plugin-react": "^7.34.0",
     "eslint-plugin-react-hooks": "4.3.0",
     "file-loader": "6.2.0",
     "fs": "0.0.1-security",
     "html-webpack-plugin": "5.5.0",
-    "prettier": "2.5.1",
+    "prettier": "^2.5.1",
     "react-refresh": "0.9.0",
     "style-loader": "2.0.0",
     "svg-inline-loader": "0.8.2",

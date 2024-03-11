@@ -103,7 +103,8 @@ const Create = () => {
             className="w-full md:w-[60%] h-fit  bg-[white] p-[25px] rounded-md"
             onClick={(e) => {
               e.stopPropagation();
-            }}>
+            }}
+          >
             <Formik
               initialValues={{
                 username: "",
@@ -125,7 +126,8 @@ const Create = () => {
                   toast.error("Some Error!", e.code);
                 }
                 setSubmitting(false);
-              }}>
+              }}
+            >
               {({ values, handleChange, handleSubmit, isSubmitting }) => (
                 <React.Fragment>
                   <div>
@@ -152,7 +154,8 @@ const Create = () => {
                   <LoadingButton
                     className="mt-[1rem]  bg-[#0560FD] text-[16px] font-medium text-[#FFFFFF] py-[12px] px-[22px] rounded-[10px]"
                     loading={isSubmitting}
-                    onClick={handleSubmit}>
+                    onClick={handleSubmit}
+                  >
                     Save
                   </LoadingButton>
                 </React.Fragment>
@@ -171,7 +174,8 @@ const SelectAvailability = ({ filter, setFilter }) => {
       <select
         className="w-[180px] bg-[#FFFFFF] text-[14px] text-[#212325] font-normal py-2 px-[14px] rounded-[10px] border-r-[16px] border-[transparent] cursor-pointer"
         value={filter.availability}
-        onChange={(e) => setFilter({ ...filter, availability: e.target.value })}>
+        onChange={(e) => setFilter({ ...filter, availability: e.target.value })}
+      >
         <option disabled>Availability</option>
         <option value={""}>All availabilities</option>
         {[
@@ -196,7 +200,8 @@ const FilterStatus = ({ filter, setFilter }) => {
       <select
         className="w-[180px] bg-[#FFFFFF] text-[14px] text-[#212325] font-normal py-2 px-[14px] rounded-[10px] border-r-[16px] border-[transparent] cursor-pointer"
         value={filter.status}
-        onChange={(e) => setFilter({ ...filter, status: e.target.value })}>
+        onChange={(e) => setFilter({ ...filter, status: e.target.value })}
+      >
         <option disabled>Status</option>
         <option value={""}>All status</option>
         {[
@@ -219,7 +224,8 @@ const UserCard = ({ hit, projects }) => {
   return (
     <div
       onClick={() => history.push(`/user/${hit._id}`)}
-      className="flex flex-col bg-white hover:-translate-y-1 transition duration-100 shadow-sm ease-in cursor-pointer  relative rounded-[16px] pb-4 overflow-hidden">
+      className="flex flex-col bg-white hover:-translate-y-1 transition duration-100 shadow-sm ease-in cursor-pointer  relative rounded-[16px] pb-4 overflow-hidden"
+    >
       <div className="relative flex items-start justify-center pt-6 pb-2">
         <div className="absolute top-0 left-0 w-full h-full z-10 overflow-hidden">
           <img

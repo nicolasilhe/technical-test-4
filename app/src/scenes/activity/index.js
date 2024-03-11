@@ -150,7 +150,8 @@ const Activities = ({ date, user, project }) => {
                         <th
                           className={`w-[20px] border border-[#E5EAEF] text-[12px] font-semibold text-center ${day == 0 || day == 6 ? "bg-[#FFD5F1]" : "bg-[white]"}`}
                           key={e}
-                          day={day}>
+                          day={day}
+                        >
                           <div>{weekday}</div>
                           <div>{date}</div>
                         </th>

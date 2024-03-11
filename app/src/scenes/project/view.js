@@ -47,7 +47,8 @@ export default function ProjectView() {
             <div className="flex items-center gap-2">
               <button
                 onClick={() => history.push(`/project/edit/${project?._id}`)}
-                className="border !border-[#0560FD] text-[#0560FD] py-[7px] px-[20px] bg-[#FFFFFF] rounded-[16px]">
+                className="border !border-[#0560FD] text-[#0560FD] py-[7px] px-[20px] bg-[#FFFFFF] rounded-[16px]"
+              >
                 Edit
               </button>
             </div>
@@ -175,7 +176,8 @@ const Activities = ({ project }) => {
                         <th
                           className={`w-[20px] border border-[#E5EAEF] text-[12px] font-semibold text-center ${day == 0 || day == 6 ? "bg-[#FFD5F1]" : "bg-[white]"}`}
                           key={e}
-                          day={day}>
+                          day={day}
+                        >
                           <div>{weekday}</div>
                           <div>{date}</div>
                         </th>

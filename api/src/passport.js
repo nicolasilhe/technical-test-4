@@ -27,7 +27,7 @@ module.exports = function (app) {
         console.log(error);
       }
       return done(null, false);
-    })
+    }),
   );
 
   app.use(passport.initialize());

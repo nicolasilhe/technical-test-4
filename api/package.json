@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon ./src/index.js",
-    "start": "node ./src/index.js"
+    "start": "node ./src/index.js",
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write .",
+    "lint:check": "eslint",
+    "lint:fix": "eslint --fix"
   },
   "author": "SELEGO",
   "license": "ISC",
@@ -32,6 +36,9 @@
     "sib-api-v3-sdk": "^8.0.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "nodemon": "^2.0.15",
+    "prettier": "^3.2.5"
   }
 }
